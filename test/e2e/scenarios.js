@@ -8,7 +8,7 @@ describe('authui', function() {
     });
 
     // Admin
-    describe('auth-sendmail', function() {
+    describe('admin-sendamil', function() {
 
         beforeEach(function() {
             browser.get('#/auth-event/sendemail');
@@ -42,5 +42,39 @@ describe('authui', function() {
         });
     });
 
+    var selectDropdownbyNum = function ( element, optionNum ) {
+        if (optionNum){
+            var options = element.findElements(by.tagName('option'))
+                .then(function(options){
+                    options[optionNum].click();
+                });
+        }
+    };
+
+    // User
+    describe('user-authenticate', function() {
+
+        beforeEach(function() {
+            browser.get('#/auth-event');
+        });
+
+        it('default option select', function() {
+            var select = element(by.model('authenticate'));
+            expect(element(by.selectedOption('authenticate')).getText()).toEqual('-- choose authenticate mode --');
+            //expect(select.evaluate('model.selected')).toEqual('mail');
+        });
+
+        it('should select the first option in select', function() {
+            var select = element(by.model('authenticate'));
+            selectDropdownbyNum(select, 1);
+            expect(element(by.selectedOption('authenticate')).getText()).toEqual('mail');
+        });
+
+        it('should select the second option in select', function() {
+            var select = element(by.model('authenticate'));
+            selectDropdownbyNum(select, 2);
+            expect(element(by.selectedOption('authenticate')).getText()).toEqual('sms');
+        });
+    });
 
 });
