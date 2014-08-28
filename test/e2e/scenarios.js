@@ -7,7 +7,7 @@ describe('authui', function() {
         expect(browser.getLocationAbsUrl()).toMatch("#/");
     });
 
-    // User
+    // Admin
     describe('auth-sendmail', function() {
 
         beforeEach(function() {
