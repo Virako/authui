@@ -1,3 +1,5 @@
-<select ng-model="authentication" ng-options="mode.name for mode in modes">
-    <option value="">-- choose authentication mode --</option>
-</select>
+<div ng-controller="authenticateCtrl">
+    <select ng-model="authenticate" ng-options="mode.name for mode in modes">
+        <option value="" selected="selected">-- choose authenticate mode --</option>
+    </select>
+</div>
