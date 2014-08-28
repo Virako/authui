@@ -63,37 +63,38 @@ Now browse to the app at `http://localhost:8000/app/index.html`.
 
 ## Directory Layout
 
-├── bower.json
-├── package.json
-├── .bowerrc
-├── index.html
-├── scripts
-│   ├── app.js
-│   ├── controllers
-│   │   ├── main.js
-│   ├── directives
-│   │   ├── main.js
-│   ├── filters
-│   │   └── main.js
-│   ├── services
-│   │   └── main.js
-│   └── vendor
-├── styles
-│   └── main.css
-├── templates
-│   └── authui-smscode-tpl.html
-├── test                            --> test config and source files
-│   ├── e2e                         --> end-to-end specs
-│   │   └── scenarios.js
-│   ├── karma.conf.js               --> config file for running unit tests with Karma
-│   ├── protractor-conf.js          --> config file for running e2e tests with Protractor
-│   └── unit                        --> unit level specs/tests
-│       ├── controllersSpec.js      --> specs for controllers
-│       ├── directivesSpec.js       --> specs for directives
-│       ├── filtersSpec.js          --> specs for filters
-│       ├── servicesSpec.js         --> specs for services
-└── views
-    ├── admin.html
+    ├── bower.json
+    ├── package.json
+    ├── .bowerrc
+    ├── index.html
+    ├── scripts
+    │   ├── app.js
+    │   ├── controllers
+    │   │   ├── main.js
+    │   ├── directives
+    │   │   ├── main.js
+    │   ├── filters
+    │   │   └── main.js
+    │   ├── services
+    │   │   └── main.js
+    │   └── vendor
+    ├── styles
+    │   └── main.css
+    ├── templates
+    │   └── authui-smscode-tpl.html
+    ├── test                            --> test config and source files
+    │   ├── e2e                         --> end-to-end specs
+    │   │   └── scenarios.js
+    │   ├── karma.conf.js               --> config file for running unit tests with Karma
+    │   ├── protractor-conf.js          --> config file for running e2e tests with Protractor
+    │   └── unit                        --> unit level specs/tests
+    │       ├── controllersSpec.js      --> specs for controllers
+    │       ├── directivesSpec.js       --> specs for directives
+    │       ├── filtersSpec.js          --> specs for filters
+    │       ├── servicesSpec.js         --> specs for services
+    └── views
+        ├── admin.html
+
 
 
 ## Testing
