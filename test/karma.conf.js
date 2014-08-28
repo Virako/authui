@@ -7,7 +7,7 @@ module.exports = function(config){
       'scripts/vendor/angular/angular.js',
       'scripts/vendor/angular-route/angular-route.js',
       'scripts/vendor/angular-mocks/angular-mocks.js',
-      'scripts/js/**/*.js',
+      'scripts/**/*.js',
       'test/unit/**/*.js'
     ],
 
