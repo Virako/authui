@@ -1,0 +1,14 @@
+{
+  "name": "authui",
+  "private": true,
+  "version": "3.0.0",
+  "description": "The authui is a list of html widgets that can be used to access all the functionality of authapi.",
+  "homepage": "https://github.com/agoravoting/authui",
+  "license": "AGPLv3",
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x"
+  }
+}

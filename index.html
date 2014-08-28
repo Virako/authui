@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="authui" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="authui" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="authui" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="authui" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Authui</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/main.css"/>
+</head>
+
+<body>
+  <ul class="menu">
+    <li>Widget admin:
+        <a href="#/auth-event">authenticate</a>
+        <a href="#/p/sms-code/verify">smscode</a>
+    </li>
+    <li>Widget user:
+        <a href="#/auth-event/id">admin</a>
+        <a href="#/auth-event/sendemail">sendemail</a>
+        <a href="#/auth-event/id/user">admin-users</a>
+        <a href="#/auth-event/id/attempt">admin-attemps</a>
+    </li>
+  </ul>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div ng-view></div>
+
+  <div>Authui: v<span app-version></span></div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="scripts/vendor/angular/angular.js"></script>
+  <script src="scripts/vendor/angular-route/angular-route.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/services/main.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/user.js"></script>
+  <script src="scripts/controllers/admin.js"></script>
+  <script src="scripts/filters/main.js"></script>
+  <script src="scripts/directives/main.js"></script>
+  <script src="scripts/directives/user.js"></script>
+  <script src="scripts/directives/admin.js"></script>
+</body>
+</html>
+

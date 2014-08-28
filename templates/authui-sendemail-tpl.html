@@ -1,0 +1,13 @@
+<form name="sendMassiveMails" action="#">
+    <textarea ng-model="message" rows="3" cols="25" placeholcer="Write the generic message here. "></textarea>
+    <br/>
+    <textarea ng-model="mails" rows="3" cols="25" placeholcer="Write mails here. One in each line. "></textarea>
+    <br/>
+    <p>
+        The Next message: <br>
+        {{ message }} <br>
+        send to: <br>
+        {{ mails }}
+    </p>
+    <input type="submit"/>
+</form>
