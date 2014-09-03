@@ -1,0 +1,7 @@
+textarea.ng-valid.ng-dirty {
+    background-color: lightgreen;
+}
+
+textarea.ng-invalid.ng-dirty {
+    background-color: salmon;
+}

@@ -2,12 +2,18 @@
 
 angular.module('authui.controllers')
 
-    .controller('adminCtrl', ['$scope', '$http', function($scope, $http) {
-    }]);
+    .controller('MsgCtrl', ['$scope', '$sce', function($scope, $sce) {
+        $scope.message = 'Message in html.';
 
-    //.controller('adminFormCtrl', ['$scope', '$http', function($scope, $http) {
-    //    $scope.data = {
-    //        message: "default",
-    //        mails: "default"
-    //    };
-    //}]);
+        $scope.html2msg = function() {
+            return $sce.trustAsHtml($scope.message);
+        };
+    }])
+
+    .controller('MailCtrl', function($scope, $filter) {
+        $scope.mails = '';
+
+        $scope.$watch('mails', function(val) {
+            $scope.mailList = $filter('MailsToList')(val);
+        });
+    });

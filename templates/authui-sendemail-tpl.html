@@ -1,13 +1,25 @@
 <form name="sendMassiveMails" action="#">
-    <textarea ng-model="message" rows="3" cols="25" placeholcer="Write the generic message here. "></textarea>
-    <br/>
-    <textarea ng-model="mails" rows="3" cols="25" placeholcer="Write mails here. One in each line. "></textarea>
-    <br/>
-    <p>
-        The Next message: <br>
-        {{ message }} <br>
-        send to: <br>
-        {{ mails }}
-    </p>
+    <div ng-controller="MsgCtrl">
+        Message: <br>
+        <textarea ng-model="message" rows="5" cols="80"></textarea> <br/>
+        <b>Output message:</b> <br>
+        <div ng-bind-html="html2msg()"></div> <br>
+    </div>
+
+    <div ng-controller="MailCtrl">
+        Mails:  <br>
+        <textarea ng-model="mails" rows="5" cols="80"></textarea> <br/>
+
+        <table class="table">
+            <tr>
+                <th>Output mails:</th>
+            </tr>
+            <tr ng-repeat="m in mailList">
+                <td ng-style="m.correct && {'background-color': 'lightgreen'} || {'background-color': 'salmon'}">
+                    {{ m.mail }}
+                </td>
+            </tr>
+        </table>
+    </div>
     <input type="submit"/>
 </form>

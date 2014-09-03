@@ -26,19 +26,40 @@ describe('authui', function() {
             expect(textarea.getAttribute('value')).toBe('test@world.www');
         });
 
-        it('test if binding message work', function() {
+        it('test if binding mails work with line break', function() {
             var textarea = element(by.model('message'));
             textarea.sendKeys("test");
             var p = element(by.binding('message'));
-            expect(p.getText()).toBe('The Next message:\ntest\nsend to:');
+            expect(p.getText()).toBe('The message:\ntest');
         });
 
         // TODO
-        it('test if binding mails work', function() {
+        it('test if binding mails work with line break', function() {
             var textarea = element(by.model('mails'));
             textarea.sendKeys("test@test.com\ntest2@test.com");
-            var p = element(by.binding('message'));
-            expect(p.getText()).toBe('The Next message:\n\nsend to:\ntest@test.com, test2@test.com');
+            var p = element(by.binding('mails'));
+            expect(p.getText()).toBe('Send to:\ntest@test.com, test2@test.com');
+        });
+
+        it('test if binding mails work with comma', function() {
+            var textarea = element(by.model('mails'));
+            textarea.sendKeys("test@test.com,test2@test.com");
+            var p = element(by.binding('mails'));
+            expect(p.getText()).toBe('Send to:\ntest@test.com, test2@test.com');
+        });
+
+        it('test if binding mails work with space', function() {
+            var textarea = element(by.model('mails'));
+            textarea.sendKeys("test@test.com test2@test.com");
+            var p = element(by.binding('mails'));
+            expect(p.getText()).toBe('Send to:\ntest@test.com, test2@test.com');
+        });
+
+        it('test if binding mails work with tabulation', function() {
+            var textarea = element(by.model('mails'));
+            textarea.sendKeys("test@test.com\ttest2@test.com");
+            var p = element(by.binding('mails'));
+            expect(p.getText()).toBe('Send to:\ntest@test.com, test2@test.com');
         });
     });
 
