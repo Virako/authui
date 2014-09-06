@@ -3,11 +3,11 @@
 angular.module('authui.controllers')
 
     .controller('MsgCtrl', ['$scope', '$sce', function($scope, $sce) {
-        $scope.message = 'Message in html.';
+        $scope.message = '';
 
-        $scope.html2msg = function() {
-            return $sce.trustAsHtml($scope.message);
-        };
+        $scope.$watch('message', function(val) {
+            $scope.trustedHtml = $sce.trustAsHtml($scope.message);
+        });
     }])
 
     .controller('MailCtrl', function($scope, $filter) {

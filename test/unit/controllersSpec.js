@@ -8,14 +8,20 @@ describe('controllers', function(){
     // User
     it('should ....', inject(function($controller) {
         //spec body
-        var userCtrl = $controller('userCtrl', { $scope: {} });
-        expect(userCtrl).toBeDefined();
+        var authenticateCtrl = $controller('authenticateCtrl', { $scope: {} });
+        expect(authenticateCtrl).toBeDefined();
     }));
 
     // Admin
     it('should ....', inject(function($controller) {
         //spec body
-        var adminCtrl = $controller('adminCtrl', { $scope: {} });
-        expect(adminCtrl).toBeDefined();
+        var MsgCtrl = $controller('MsgCtrl', { $scope: {} });
+        expect(MsgCtrl).toBeDefined();
+    }));
+
+    it('should ....', inject(function($controller) {
+        //spec body
+        var MailCtrl = $controller('MailCtrl', { $scope: {} });
+        expect(MailCtrl).toBeDefined();
     }));
 });

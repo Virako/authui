@@ -14,12 +14,26 @@ describe('authui', function() {
             browser.get('#/auth-event/sendemail');
         });
 
+        // Message
         it('test if textarea message work', function() {
             var textarea = element(by.model('message'));
             textarea.sendKeys("test");
             expect(textarea.getAttribute('value')).toBe('test');
         });
 
+        it('should check ng-bind-html', function() {
+            var textarea = element(by.model('message'));
+            textarea.sendKeys("<div>Test in <b>html</b></div>");
+            expect(element(by.binding('trustedHtml')).getText()).toBe('Test in html');
+        });
+
+        it('should check ng-bind-html work with line break', function() {
+            var textarea = element(by.model('message'));
+            textarea.sendKeys("<div>Line 1</br>Line 2</div>");
+            expect(element(by.binding('trustedHtml')).getText()).toBe('Line 1\nLine 2');
+        });
+
+        // Mails
         it('test if textarea mails work', function() {
             var textarea = element(by.model('mails'));
             textarea.sendKeys("test@world.www");
@@ -27,40 +41,58 @@ describe('authui', function() {
         });
 
         it('test if binding mails work with line break', function() {
-            var textarea = element(by.model('message'));
-            textarea.sendKeys("test");
-            var p = element(by.binding('message'));
-            expect(p.getText()).toBe('The message:\ntest');
-        });
-
-        // TODO
-        it('test if binding mails work with line break', function() {
             var textarea = element(by.model('mails'));
             textarea.sendKeys("test@test.com\ntest2@test.com");
-            var p = element(by.binding('mails'));
-            expect(p.getText()).toBe('Send to:\ntest@test.com, test2@test.com');
+            expect(element.all(by.repeater('m in mailList')).count()).toEqual(2);
         });
 
         it('test if binding mails work with comma', function() {
             var textarea = element(by.model('mails'));
             textarea.sendKeys("test@test.com,test2@test.com");
-            var p = element(by.binding('mails'));
-            expect(p.getText()).toBe('Send to:\ntest@test.com, test2@test.com');
+            expect(element.all(by.repeater('m in mailList')).count()).toEqual(2);
         });
 
-        it('test if binding mails work with space', function() {
+        it('test if binding mails not work with whitespace', function() {
             var textarea = element(by.model('mails'));
             textarea.sendKeys("test@test.com test2@test.com");
-            var p = element(by.binding('mails'));
-            expect(p.getText()).toBe('Send to:\ntest@test.com, test2@test.com');
+            expect(element.all(by.repeater('m in mailList')).count()).toEqual(1);
         });
 
-        it('test if binding mails work with tabulation', function() {
+        it('test if binding mails work with semicolon', function() {
             var textarea = element(by.model('mails'));
-            textarea.sendKeys("test@test.com\ttest2@test.com");
-            var p = element(by.binding('mails'));
-            expect(p.getText()).toBe('Send to:\ntest@test.com, test2@test.com');
+            textarea.sendKeys("test@test.com;test2@test.com");
+            expect(element.all(by.repeater('m in mailList')).count()).toEqual(2);
         });
+
+        it('test if binding mails work with colon', function() {
+            var textarea = element(by.model('mails'));
+            textarea.sendKeys("test@test.com:test2@test.com");
+            expect(element.all(by.repeater('m in mailList')).count()).toEqual(2);
+        });
+
+        it('test if binding mails work with semicolon, colon, comma and line break', function() {
+            var textarea = element(by.model('mails'));
+            textarea.sendKeys("test@test.com;test2@test.com:test3@test.com,test4@test.com\ntest5@test.com");
+            expect(element.all(by.repeater('m in mailList')).count()).toEqual(5);
+        });
+
+        it('test valid mail', function() {
+            var textarea = element(by.model('mails'));
+            textarea.sendKeys("test@test.com");
+            var valid = element(by.repeater('m in mailList').row(0).column('{{ m.mail }}'));
+            var lightgreen = 'rgba(144, 238, 144, 1)';
+            expect(valid.getCssValue('background-color')).toBe(lightgreen); //
+
+        });
+
+        it('test invalid mail', function() {
+            var textarea = element(by.model('mails'));
+            textarea.sendKeys("test@@test.com");
+            var valid = element(by.repeater('m in mailList').row(0).column('{{ m.mail }}'));
+            var salmon = 'rgba(250, 128, 114, 1)';
+            expect(valid.getCssValue('background-color')).toBe(salmon); //
+        });
+
     });
 
     var selectDropdownbyNum = function ( element, optionNum ) {

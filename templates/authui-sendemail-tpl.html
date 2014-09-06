@@ -3,7 +3,7 @@
         Message: <br>
         <textarea ng-model="message" rows="5" cols="80"></textarea> <br/>
         <b>Output message:</b> <br>
-        <div ng-bind-html="html2msg()"></div> <br>
+        <div ng-bind-html="trustedHtml"></div> <br>
     </div>
 
     <div ng-controller="MailCtrl">
